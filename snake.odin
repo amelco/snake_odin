@@ -21,7 +21,7 @@ ASPECT_RATIO  : f32 : 16/9.0
 WINDOW_WIDTH  : i32 : 800
 WINDOW_HEIGHT : f32 : f32(WINDOW_WIDTH) / ASPECT_RATIO
 WORLD_WIDTH   : i32 : WINDOW_WIDTH / 10
-WORLD_HEIGHT  : i32 : i32(WINDOW_HEIGHT / 10.0)
+WORLD_HEIGHT  : i32 : i32(WINDOW_HEIGHT) / 10
 CELL_SIZE     : i32 : WINDOW_WIDTH / WORLD_WIDTH
 
 // globals
@@ -81,11 +81,13 @@ snake_update :: proc()
     }
     positions[0] = snake.pos;
 
+    // eat food
     if snake.pos == food 
     {
         grow = true;
         has_food = false;
         food = {-1, -1}
+        snake.speed += 1;
     }
 }
 
