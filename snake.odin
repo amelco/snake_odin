@@ -130,7 +130,7 @@ check_game_over :: proc()
 
 main :: proc()
 {
-    rl.InitWindow(800, 450, "raylib [core] example - basic window");
+    rl.InitWindow(800, 450, "SSnake ~~~");
     defer rl.CloseWindow();
 
     snake_init();
