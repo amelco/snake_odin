@@ -71,6 +71,12 @@ snake_update :: proc()
     if snake.direction == Direction.up    { snake.pos.y -= 1 }
     if snake.direction == Direction.down  { snake.pos.y += 1 }
 
+    // wrap around
+    if snake.pos.x < 0 { snake.pos.x = WORLD_WIDTH - 3 }
+    if snake.pos.y < 0 { snake.pos.y = WORLD_HEIGHT - 3 }
+    if snake.pos.x > WORLD_WIDTH - 3 { snake.pos.x = 0 }
+    if snake.pos.y > WORLD_HEIGHT - 3 { snake.pos.y = 0 }
+
     // positions update
     for i := len(positions); i > 0; i -= 1
     {
